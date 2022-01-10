@@ -1,0 +1,39 @@
+.BodyCard {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    min-height: 300px;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 3px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.BodyCard p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.BodyCard .EditBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 15px;
+    background-color: rgb(65, 75, 209);
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.BodyCard .EditBody p{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
