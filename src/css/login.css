@@ -83,3 +83,8 @@
     color: #000;
   }
   
+  .btnLoading{
+    display: flex;
+    justify-content: center;
+    
+  }

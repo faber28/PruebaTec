@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import '../css/App.css';
 import {CardContacto, CardNew} from '../components/Card';
 import {obtenerContactos, eliminarContacto} from "../utils/api";
 
 export default function Contacto() {
+  return (
+    <ObtenerDatos/>
+  );
+};
 
+const ObtenerDatos = () => {
   const [contacto, setContactos] = useState([]);
   const [errorToken, setErrorToken] = useState([]);
   const token = localStorage.getItem('Token');
@@ -15,8 +20,8 @@ export default function Contacto() {
     })
   }
 
-  const contactos = async () =>  {
-    await obtenerContactos(token,
+  useEffect(() => {
+    obtenerContactos(token,
       (response) => {
         if(response.data.error){
           setErrorToken(response.data.error)
@@ -25,8 +30,7 @@ export default function Contacto() {
         }
       }
     );
-  }
-  contactos();
+  });
 
   return (
     <div className="App">
@@ -58,4 +62,4 @@ export default function Contacto() {
       </div>
     </div>
   );
-}
+} 

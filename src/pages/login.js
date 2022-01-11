@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState} from "react";
 import '../css/login.css';
-import {iniciarSesion }from '../utils/api.js';
+import {iniciarSesion } from '../utils/api.js';
+import ReactLoading from 'react-loading';
 
 export default function Login () {
+    const [loading, setLoading] = useState([false]);
 
     const submitForm = async (e) => {
         
@@ -20,9 +22,13 @@ export default function Login () {
             if(!response.data.error) {
               localStorage.setItem('Token', response.data.success)
               localStorage.setItem('idUser', response.data.data.idUser)
+              setLoading(false)
               window.location.href="./agenda"
+            }else if(response.status !== 200){
+                setLoading(false)
             }else{
-                alert(response.data.error)
+                setLoading(true)
+                alert(response.data.error);;
             }
             e.target.reset();
           }
@@ -38,7 +44,14 @@ export default function Login () {
                 <input id="txtEmail" type="text" placeholder="Ingresa tu correo..."/>
                 <label for="contraseña">Password</label>
                 <input id="txtPassword" type="password" placeholder="Escribe tu contraseña..."/>
-                <button type="submit" name="button">Iniciar Sesión</button>
+                <button 
+                  disabled={false} 
+                  type="submit" 
+                  name="button" 
+                  className="btnLoading">
+                    {loading ? 'Iniciar Sesion' : 
+                    <ReactLoading type='spin' heigth={30} width={30}/>}
+                </button>
                 <button type="button" name="button">Crear una cuenta</button>
             </form>
         </div>
