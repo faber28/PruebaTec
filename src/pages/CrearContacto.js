@@ -7,6 +7,7 @@ export default function CreateContact () {
 
     const token = localStorage.getItem('Token');
     const idUser = localStorage.getItem('idUser');
+    const Logeado = localStorage.getItem('Logeado');
 
     const submitForm = async (e) => {
         
@@ -42,41 +43,57 @@ export default function CreateContact () {
         );
         
       };
-  return (
-    <div className="BodyContacto">
-        <div class="Contacto">
-            <h1>Agregar Contacto</h1>
-            <form onSubmit={submitForm} className="Conten">
-                <div>
-                    <label for="usuario">Nombres</label>
-                    <input id="txtName" type="text" placeholder="Nombres..."/>
-                </div>
-                <div>
-                    <label for="usuario">Apellidos</label>
-                    <input id="txtLast" type="text" placeholder="Apellidos..."/>
-                </div>
-                <div>
-                    <label for="usuario">Dirección</label>
-                    <input id="txtDir" type="text" placeholder="Dirección..."/>
-                </div>
-                <div>
-                    <label for="usuario">Celular</label>
-                    <input id="txtCel" type="text" placeholder="Celular..."/>
-                </div>
-                <div>
-                    <label for="usuario">Telefono</label>
-                    <input id="txtTel" type="text" placeholder="Telefono..."/>
-                </div>
-                <div>
-                    <label for="usuario">Correo electrónico</label>
-                    <input id="txtEmail" type="text" placeholder="Correo..."/>
-                </div>
-                <button type="submit" name="button">Agregar</button>
-                <Link to="/agenda">
-                    <button name="button">Cancelar</button>
-                </Link>
-            </form>
+  if(Logeado === "true"){
+    return (
+        <div className="BodyContacto">
+            <div className="Contacto">
+                <h1>Agregar Contacto</h1>
+                <form onSubmit={submitForm} className="Conten">
+                    <div>
+                        <label htmlFor="usuario">Nombres</label>
+                        <input id="txtName" type="text" placeholder="Nombres..."/>
+                    </div>
+                    <div>
+                        <label htmlFor="usuario">Apellidos</label>
+                        <input id="txtLast" type="text" placeholder="Apellidos..."/>
+                    </div>
+                    <div>
+                        <label htmlFor="usuario">Dirección</label>
+                        <input id="txtDir" type="text" placeholder="Dirección..."/>
+                    </div>
+                    <div>
+                        <label htmlFor="usuario">Celular</label>
+                        <input id="txtCel" type="text" placeholder="Celular..."/>
+                    </div>
+                    <div>
+                        <label htmlFor="usuario">Telefono</label>
+                        <input id="txtTel" type="text" placeholder="Telefono..."/>
+                    </div>
+                    <div>
+                        <label htmlFor="usuario">Correo electrónico</label>
+                        <input id="txtEmail" type="text" placeholder="Correo..."/>
+                    </div>
+                    <button type="submit" name="button">Agregar</button>
+                    <Link to="/agenda">
+                        <button name="button">Cancelar</button>
+                    </Link>
+                </form>
+            </div>
         </div>
-    </div>
-  );    
+      );
+  }else{
+      return(
+        <>
+            <div Style="width:100%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                <h2>No has iniciado sesión, por favor inicia o crea una cuenta nueva!</h2>
+                <Link to="/">
+                    <button type="button" name="button">Iniciar Sesión</button>
+                </Link>
+                <Link to="/usuario/crear">
+                    <button type="button" name="button">Crear una cuenta</button>
+                </Link>
+            </div>
+        </>
+      );
+  }
 };

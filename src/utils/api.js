@@ -16,11 +16,35 @@ export const iniciarSesion = async(datos, successCallback) => {
     await axios.request(options).then(successCallback);
 };
 
+export const crearUsuario = async(datos, successCallback) => {
+
+    const options = {
+        method: 'POST',
+        url: `${database}/user/registro`,
+        data: {
+            idUser: datos.idUser,
+            username: datos.username,
+            email: datos.email,
+            password: datos.password
+        }
+    };
+    await axios.request(options).then(successCallback);
+};
+
 export const obtenerContactos = async(token, successCallback) => {
 
     const options = {
         method: 'GET',
         url: `${database}/contacto/${idUser}`,
+        headers: {usertoken: token}
+    };
+    await axios.request(options).then(successCallback);
+};
+
+export const findOneContact = async(id, token, successCallback) => {
+    const options = {
+        method: 'GET',
+        url: `${database}/contacto/editar/${id}`,
         headers: {usertoken: token}
     };
     await axios.request(options).then(successCallback);

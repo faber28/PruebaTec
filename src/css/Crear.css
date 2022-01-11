@@ -68,6 +68,7 @@
     font-size: 18px;
     border-radius: 10px;
     left: 50%;
+    margin: 0px;
     margin-bottom: 10px;
     cursor: pointer;
   }
@@ -75,9 +76,7 @@
     margin: auto;
     font-size: 12px;
     line-height: 20px;
-    color: #166FE5;
-    margin-left: 35px;
-    margin-right: 2px;
+    width: 100%;
   }
   .Contacto a:hover {
     color: #000;

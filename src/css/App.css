@@ -29,6 +29,27 @@
   border-radius: 10px;
 }
 
+.btnSalir {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.NavBar h2 {
+  width: 100%;
+}
+
+button{
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #185ad4;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
