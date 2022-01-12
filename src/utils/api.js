@@ -78,3 +78,22 @@ export const agregarContacto = async(datos, token, successCallback) => {
     };
     await axios.request(options).then(successCallback);
 };
+
+export const editarContacto = async(id, datos, token, successCallback) => {
+
+    const options = {
+        method: 'PUT',
+        url: `${database}/contacto/${id}`,
+        headers: {usertoken: token},
+        data: {
+            idUser: idUser,
+            nombres: datos.nombres,
+            apellidos: datos.apellidos,
+            direccion: datos.direccion,
+            celular: datos.celular,
+            telefono: datos.telefono,
+            correo: datos.email
+        } 
+    };
+    await axios.request(options).then(successCallback);
+};

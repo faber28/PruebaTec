@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {findOneContact} from "../utils/api";
+import {findOneContact, editarContacto} from "../utils/api";
 
 export default function EditContact() {
     const {id} = useParams();
@@ -23,7 +23,34 @@ export default function EditContact() {
     })
 
     const submitForm = async (e) => {
+        e.preventDefault();
 
+        let name = document.getElementById('txtName').value;
+        let lastName = document.getElementById('txtLast').value;
+        let dir = document.getElementById('txtDir').value;
+        let cel = document.getElementById('txtCel').value;
+        let tel = document.getElementById('txtTel').value;
+        let email = document.getElementById('txtEmail').value;
+
+        await editarContacto(id,
+            {
+                nombres: name,
+                apellidos: lastName,
+                direccion: dir,
+                celular: cel,
+                telefono: tel,
+                email: email,
+          },token,
+            (response) => {
+              if(response.data.success) {
+                alert("Datos Modificados!")
+                window.location.href="/agenda"
+              }else{
+                  console.log("error: ", response)
+              }
+              e.target.reset();
+            }
+          );
     }
 
     if(Logeado === "true"){
