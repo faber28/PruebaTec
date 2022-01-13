@@ -8,6 +8,10 @@ https://github.com/faber28/PruebaTec
 
 El proyecto se puede ejecutar con los siguientes scripts
 
+### `npm install axios`
+
+### `npm install react-loading`
+
 ### `npm start`
 
 Corre la app en: [http://localhost:3000]
